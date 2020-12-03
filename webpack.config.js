@@ -12,6 +12,10 @@ module.exports = {
         filename: 'bundle.js',
     },
 
+    devServer: {
+      publicPath: '/dist/'
+    },
+
     // file resolutions
     resolve: {
         extensions: [ '.ts', '.js' ],
