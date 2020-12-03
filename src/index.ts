@@ -1,10 +1,8 @@
-import { controller, target } from "@github/catalyst"
+import {HelloWorldElement}  from './HelloWorld'
+import {IxCounterElement}  from './IxCounter'
+import {IxList}  from './IxList'
 
-@controller
-class HelloWorldElement extends HTMLElement {
-  @target output: HTMLElement
-
-  greet() {
-    this.output.textContent = `Hello, Kenneth!`
-  }
-}
+export { 
+  HelloWorldElement, 
+  IxCounterElement,
+  IxList }

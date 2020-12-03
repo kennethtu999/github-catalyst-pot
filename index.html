@@ -1,22 +1,75 @@
 <html>
-    <header>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>試用github Catalyst</title>              
-        <script src="node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-        <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    </header>
-    <body>
-        <hello-world>
-            <span
-              data-target="hello-world.output">
-            </span>
-            <input type="button" value="CLICK" data-action="click:hello-world#greet"/>
-       
-        </hello-world>
-        <script src="dist/bundle.js"></script>
-    
-    </body>
-</html>
+  <header>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>試用github Catalyst</title>
+    <script src="node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <style>
+      #demo-place li {
+        padding-bottom: 5px;
+      }
 
+      .title {
+        background-color: burlywood;
+        color: darkblue;
+      }
+      .comment {
+        font-size: small;
+        background-color: burlywood;
+        color: darkslateblue;
+      }
+    </style>
+  </header>
+  <body>
+    <ol id="demo-place">
+      <li>
+        <div class="title">Hello World範例</div>
+        <div class="comment">實作程式 HelloWorld.ts</div>
+
+        <br />
+        <hello-world>
+          <input
+            type="button"
+            value="點擊"
+            data-action="click:hello-world#greet"
+          />
+          <span data-target="hello-world.output"> </span>
+        </hello-world>
+      </li>
+
+      <li>
+        <div class="title">計數器範例</div>
+        <div class="comment">實作程式 IxCounter.ts</div>
+
+        <br />
+        <ix-counter></ix-counter>
+        <br />
+      </li>
+
+      <li>
+        <div class="title">List範例</div>
+        <div class="comment">實作程式 IxList.ts</div>
+
+        <br />
+        <ix-list>
+          <input
+            type="text"
+            title="名稱"
+            data-target="ix-list.label"
+          /><input
+            type="button"
+            value="新增"
+            data-action="click:ix-list#addItem"
+          />
+          <ul data-target="ix-list.container">清單內容</ul>
+          <span data-target="hello-world.output"> </span>
+        </hello-world>
+      </li>
+
+    </ol>
+
+    <script src="dist/bundle.js"></script>
+  </body>
+</html>
