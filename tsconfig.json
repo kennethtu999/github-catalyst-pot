@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "strict": true,
+      "strictPropertyInitialization": false,
+      "sourceMap": true,
+      "outDir": "./dist/"
+    }
+}
