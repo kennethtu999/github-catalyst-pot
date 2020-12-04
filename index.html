@@ -20,6 +20,20 @@
         background-color: burlywood;
         color: darkslateblue;
       }
+
+      .message {
+        color: red;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 30% auto;
+        padding: 10px;
+      }
+
+      .grid-item {
+        text-align: left;
+      }
     </style>
   </header>
   <body>
@@ -75,11 +89,31 @@
         <div class="comment">實作程式 IxTxnTransfer.ts</div>
 
         <br />
-        <ix-txn-transfer  data-action="loaded:ix-txn-transfer#modelUpdate2" >
-            <input type="button" value="Update" data-action="loaded:ix-txn-transfer#modelUpdate click:ix-txn-transfer#modelUpdate">
-            <ix-combo data-eid="payer" data-target="ix-txn-transfer.payer" data-action="ichange:ix-txn-transfer#modelUpdate2"></ix-combo>
-            <ix-combo data-eid="payee" data-target="ix-txn-transfer.payee" data-action="ichange:ix-txn-transfer#modelUpdate2"></ix-combo>
+        <ix-txn-transfer> 
+            <div class="grid-container">
+                <div class='grid-item'>轉出帳號:</div>
+                <div class='grid-item'><ix-combo data-eid="payer" data-target="ix-txn-transfer.payer" data-action="ichange:ix-txn-transfer#doPayerChanged"></ix-combo></div>
+            
+                <div class='grid-item'>轉入帳號:</div>
+                <div class='grid-item'><ix-combo data-eid="payee" data-target="ix-txn-transfer.payee" data-action="ichange:ix-txn-transfer#modelUpdate2"></ix-combo></div>
+            
+                <div class='grid-item'>金額: </div>
+                <div class='grid-item'><input data-target="ix-txn-transfer.amount"></input></div>
+            </div>
+            <input type="button" value="下一步" data-action="click:ix-txn-transfer#doAction"></input>
+            <pre class="message" hidden="true" data-target="ix-txn-transfer.submitDesc"></pre>
+    
         </ix-txn-transfer>
+      </li>
+
+      <li>
+        <div class="title">TxnTransfer2範例</div>
+        <div class="comment">實作程式 IxTxnTransfer2.ts</div>
+
+        <br />
+        <ix-txn-transfer2> 
+            
+        </ix-txn-transfer2>
       </li>
 
     </ol>

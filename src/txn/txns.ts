@@ -1,3 +1,4 @@
-import {IxTxnTransferElement}  from './IxTxnTransfer'
+import * as ixTxnTransfer  from './IxTxnTransfer'
+import * as ixTxnTransfer2 from './iXTxnTransfer2/IxTxnTransfer2'
 
-export { IxTxnTransferElement }
+export { ixTxnTransfer,ixTxnTransfer2 }
