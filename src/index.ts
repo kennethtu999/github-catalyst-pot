@@ -1,8 +1,4 @@
-import {HelloWorldElement}  from './HelloWorld'
-import {IxCounterElement}  from './IxCounter'
-import {IxList}  from './IxList'
+import * as atomics from './atomic/components'
+import * as txns from './txn/txns'
 
-export { 
-  HelloWorldElement, 
-  IxCounterElement,
-  IxList }
+export { atomics, txns }

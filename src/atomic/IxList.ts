@@ -16,14 +16,24 @@ class Util {
 }
 
 @controller
-class IxList extends HTMLElement {
+class IxListElement extends HTMLElement {
   @target container: HTMLElement;
-  @target label: HTMLInputElement;
+  @target input: HTMLInputElement;
   @targets items: HTMLElement[];
   
-  addItem() {
+  addItem(event:UIEvent) {
+    if (event instanceof KeyboardEvent && (event as KeyboardEvent).key !== 'Enter') {
+      return;
+    }
+
+    let val = this.input.value;
+    if (val === '') {
+      return; 
+    }
+    
     var util = new Util();  
-    this.container.appendChild(util.CreateElement(this.label.value));
+    this.container.appendChild(util.CreateElement(val));
+    this.input.value = '';
   }
   
   removeItem(event: { target: HTMLElement; }) {
@@ -33,4 +43,4 @@ class IxList extends HTMLElement {
   }
 }
 
-export { IxList };
+export { IxListElement };

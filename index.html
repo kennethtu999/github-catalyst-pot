@@ -57,7 +57,8 @@
           <input
             type="text"
             title="名稱"
-            data-target="ix-list.label"
+            data-target="ix-list.input"
+            data-action="keypress:ix-list#addItem"
           /><input
             type="button"
             value="新增"
@@ -65,7 +66,20 @@
           />
           <ul data-target="ix-list.container">清單內容</ul>
           <span data-target="hello-world.output"> </span>
-        </hello-world>
+        </ix-list>
+      </li>
+
+
+      <li>
+        <div class="title">TxnTransfer範例</div>
+        <div class="comment">實作程式 IxTxnTransfer.ts</div>
+
+        <br />
+        <ix-txn-transfer  data-action="loaded:ix-txn-transfer#modelUpdate2" >
+            <input type="button" value="Update" data-action="loaded:ix-txn-transfer#modelUpdate click:ix-txn-transfer#modelUpdate">
+            <ix-combo data-eid="payer" data-target="ix-txn-transfer.payer" data-action="ichange:ix-txn-transfer#modelUpdate2"></ix-combo>
+            <ix-combo data-eid="payee" data-target="ix-txn-transfer.payee" data-action="ichange:ix-txn-transfer#modelUpdate2"></ix-combo>
+        </ix-txn-transfer>
       </li>
 
     </ol>
