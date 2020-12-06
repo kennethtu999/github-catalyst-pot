@@ -86,7 +86,6 @@ class IxTxnTransferElement extends HTMLElement {
       payer : this.payer.getAttribute("value"),
       amount : parseInt(this.amount.value,10)
     }
-    
   }
 
   /**

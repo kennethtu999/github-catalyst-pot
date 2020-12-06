@@ -9,6 +9,14 @@ import { IxTxnTransferDataGarden, IxTxnTransferViewModel } from "./IxTxnTransfer
 
 const logger = platform.newLogger("IxTxnTransfer2")
 
+const timeout = (ms:number) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const sleep = async (ms:number) => {
+  await timeout(ms);
+}
+
 @controller
 class IxTxnTransfer2Element extends HTMLElement {
   garden : IxTxnTransferDataGarden
@@ -20,14 +28,21 @@ class IxTxnTransfer2Element extends HTMLElement {
 
   @target submitDesc: HTMLSpanElement;
 
+  
+
   async connectedCallback() {
     this.garden = new IxTxnTransferDataGarden();
     this.render = new IxTxnTransferRender();
 
     await this.garden.loadInitData();
     
+    this.render.renderLoading(this);
+    
+    //停三秒再顯示畫面
+    await sleep(3000);
+    
     this.render.renderHome(this);
-
+    
     await this._homeViewIint();
 
     this._registerEvent();
@@ -78,12 +93,50 @@ class IxTxnTransfer2Element extends HTMLElement {
   /**
    * 下一步
    */
-  doHomeAction() {
+  async doActionHome() {
     var viewData = this._homeDataFetch();
 
-    logger.info(viewData);
-    this.submitDesc.textContent= JSON.stringify(viewData ,null, 2);
-    this.submitDesc.hidden=false;
+    if ( viewData.payer && viewData.payee && viewData.amount) {
+      this.render.renderLoading(this);
+      //停1.5秒再顯示畫面
+      await sleep(1500);
+      this.render.renderConfirm(this, viewData);
+      this.submitDesc.hidden=true;
+      
+    } else {
+      this.submitDesc.textContent= JSON.stringify(viewData ,null, 2);
+      this.submitDesc.hidden=false;
+    }
+  }
+
+  /**
+   * 確認
+   */
+  async doActionConfirm() {
+    var viewData = this._homeDataFetch();
+
+    this.render.renderLoading(this);
+    //停1.5秒再顯示畫面
+    await sleep(1500);
+    this.render.renderResult(this, viewData);
+  }
+
+
+  /**
+   * 確認
+   */
+  async doActionRenew() {
+   
+    this.render.renderLoading(this);
+    //停1.5秒再顯示畫面
+    await sleep(1500);
+
+    this.render.removeAll(this);
+
+    this.render.renderHome(this);
+    
+    await this._homeViewIint();
+
   }
 }
 

@@ -4,8 +4,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>試用github Catalyst</title>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=GF2ralak_QSrFOFMza85BQ&gtm_preview=env-17&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NJ4VSV9');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Support CustomElement -->
     <script src="node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <!-- End Support CustomElement -->
+    
     <style>
       #demo-place li {
         padding-bottom: 5px;
@@ -37,6 +49,12 @@
     </style>
   </header>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJ4VSV9&gtm_auth=GF2ralak_QSrFOFMza85BQ&gtm_preview=env-17&gtm_cookies_win=x"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+
+    <platform-tracking>
     <ol id="demo-place">
       <li>
         <div class="title">Hello World範例</div>
@@ -100,7 +118,7 @@
                 <div class='grid-item'>金額: </div>
                 <div class='grid-item'><input data-target="ix-txn-transfer.amount"></input></div>
             </div>
-            <input type="button" value="下一步" data-action="click:ix-txn-transfer#doAction"></input>
+            <input type="button" value="下一步" data-action="click:platform-tracking#save click:ix-txn-transfer#doAction"></input>
             <pre class="message" hidden="true" data-target="ix-txn-transfer.submitDesc"></pre>
     
         </ix-txn-transfer>
@@ -117,6 +135,7 @@
       </li>
 
     </ol>
+    </platform-tracking>
 
     <script src="dist/bundle.js"></script>
   </body>
