@@ -1,8 +1,10 @@
-import {platform, Logger}  from './Platform'
+import {platform, Logger, ApplicationInfo, ApplicationConnector}  from './Platform'
 import {EventData}  from './EventData'
 
 export { 
   platform, 
   Logger,
+  ApplicationInfo, 
+  ApplicationConnector,
   EventData
  }
